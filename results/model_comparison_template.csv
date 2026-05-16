@@ -1,5 +1,0 @@
-model,cv_score,public_score,training_cost,role,notes
-CatBoost,[insert],0.81318,Medium,Final selected model,CatBoost-based blended pipeline
-XGBoost + KMeansSMOTE,up to 0.81114,0.81295,Medium,Strong comparison model,Compact XGBoost with KMeansSMOTE
-LightGBM,[insert],[insert],Low to medium,Fast boosting benchmark,10-fold CV with OOF threshold search
-HGBC,[insert],[insert],Low to medium,Reproducible baseline,Weighted ensemble of HistGradientBoostingClassifier models
