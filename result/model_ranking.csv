@@ -1,0 +1,6 @@
+rank,model,public_score,submission_file,role,notes
+1,CatBoost,0.81318,catboost_submission_0.81318.csv,Final selected model,Best public Kaggle score among submitted models
+2,XGBoost + KMeansSMOTE,0.81295,XGBoost + KMeansSMOTE_submission_0.81295.csv,Strongest comparison model,Very close to CatBoost and used as the strongest comparison route
+3,LightGBM,0.80734,LightGBM_submission_0.80734.csv,Fast boosting benchmark,Used as an efficient boosting benchmark
+4,ExtraTrees,0.80313,ExtraTree_submission_0.80313.csv,Additional comparison model,Additional tree-based model added for comparison
+5,HGBC,0.80266,HGBC_submission_0.80266.csv,Reproducible baseline,Scikit-learn baseline model for comparison

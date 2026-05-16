@@ -4,7 +4,7 @@ This repository contains the source code and project materials for the AI3023 Ma
 
 ## Project Overview
 
-This project follows a standard machine learning workflow:
+This project follows a complete machine learning workflow:
 
 1. Data loading and inspection
 2. Data preprocessing
@@ -13,11 +13,12 @@ This project follows a standard machine learning workflow:
 5. Model training and validation
 6. Model comparison
 7. Kaggle submission generation
+8. Result tracking and presentation preparation
 
 The final selected model is a CatBoost-based blended pipeline. The best public Kaggle score achieved by our team is:
 
 ```text
-0.80967
+0.81318
 ```
 
 ## Team Information
@@ -26,6 +27,7 @@ The final selected model is a CatBoost-based blended pipeline. The best public K
 - Competition: Kaggle Spaceship Titanic
 - Team name: milkloong @MLW
 - Task type: Binary classification
+- Evaluation metric: Classification accuracy
 
 ## Repository Structure
 
@@ -37,36 +39,49 @@ Spaceship-Titanic-MLW/
 ├── .gitignore
 |
 ├── notebooks/
-│   ├── 01_eda_and_preprocessing.ipynb
-│   ├── 02_catboost_final_model.ipynb
-│   ├── 03_xgboost_model.ipynb
-│   ├── 04_lightgbm_model.ipynb
-│   └── 05_hgbc_model.ipynb
+│   ├── catboost_model.ipynb
+│   ├── xgboost_kmeanssmote_model.ipynb
+│   ├── lightgbm_model.ipynb
+│   ├── hgbc_model.ipynb
+│   └── extratrees_model.ipynb
 |
 ├── src/
 │   ├── preprocessing.py
-│   ├── train_catboost.py
-│   ├── train_xgboost.py
-│   ├── train_lightgbm.py
-│   └── train_hgbc.py
+│   ├── train_CatBoost.py
+│   ├── train_XGBoost + KMeansSMOTE.py
+│   ├── train_LightGBM.py
+│   ├── train_HGBC.py
+│   └── train_ExtraTree.py
 |
 ├── submissions/
-│   ├── catboost_last_try_submission.csv
-│   ├── xgboost_submission.csv
-│   ├── lightgbm_submission.csv
-│   └── hgbc_submission.csv
+│   ├── catboost_submission_0.81318.csv
+│   ├── XGBoost + KMeansSMOTE_submission_0.81295.csv
+│   ├── LightGBM_submission_0.80734.csv
+│   ├── ExtraTree_submission_0.80313.csv
+│   └── HGBC_submission_0.80266.csv
+|
+├── results/
+│   ├── model_comparison.csv
+│   ├── model_ranking.csv
+│   └── score_progression.csv
 |
 ├── figures/
-│   ├── missing_values.png
 │   ├── target_distribution.png
-│   ├── spending_distribution.png
-│   └── model_comparison.png
+│   ├── cryosleep_transport_rate.png
+│   ├── missing_value_ratio.png
+│   ├── public_score_comparison.png
+│   └── kaggle_score_progression.png
+|
+├── docs/
+│   ├── method_summary.md
+│   ├── github_upload_checklist.md
+│   └── presentation_outline.md
 |
 ├── report/
 │   └── final_report.pdf
 |
 └── slides/
-    └── presentation.pptx
+    └── final_presentation.pptx
 ```
 
 ## Dataset
@@ -85,14 +100,15 @@ The raw Kaggle dataset is not included in this repository.
 
 ## Implemented Models
 
-This project implements and compares four machine learning models:
+This project implements and compares five machine learning model routes:
 
 1. CatBoost
-2. XGBoost
+2. XGBoost + KMeansSMOTE
 3. LightGBM
 4. Histogram Gradient Boosting Classifier
+5. ExtraTrees
 
-Although several models were implemented for comparison, the final selected submission model is the CatBoost blended pipeline because it achieved the best public leaderboard score among our experiments.
+The four main comparison models are CatBoost, XGBoost + KMeansSMOTE, LightGBM, and HGBC. ExtraTrees was added as an additional tree-based comparison model.
 
 ## Final Selected Model
 
@@ -103,9 +119,13 @@ The final pipeline is based on CatBoost and includes:
 - Passenger group feature extraction
 - Cabin feature decomposition
 - Spending-related feature engineering
+- Name and surname feature extraction
+- Interaction feature construction
 - Cross-validated model training
 - Probability blending between CatBoost feature sets
 - Kaggle submission generation
+
+CatBoost was selected as the final model because it achieved the best public leaderboard score among our submitted models and handled the engineered categorical features effectively.
 
 ## Environment Setup
 
@@ -129,56 +149,78 @@ data/test.csv
 data/sample_submission.csv
 ```
 
-4. Open the final CatBoost notebook:
+4. Run the final CatBoost notebook:
 
 ```text
-notebooks/02_catboost_final_model.ipynb
+notebooks/catboost_model.ipynb
 ```
 
-5. Run all cells from top to bottom.
-6. The final submission file will be generated as:
+or run the CatBoost training script:
+
+```bash
+python "src/train_CatBoost.py"
+```
+
+5. The final submission file is stored in:
 
 ```text
-catboost_last_try_submission.csv
+submissions/catboost_submission_0.81318.csv
 ```
 
 ## Comparison Models
 
-The comparison models can be reproduced using the following notebooks:
+The comparison models can be reviewed using the following notebooks:
 
 ```text
-notebooks/03_xgboost_model.ipynb
-notebooks/04_lightgbm_model.ipynb
-notebooks/05_hgbc_model.ipynb
+notebooks/xgboost_kmeanssmote_model.ipynb
+notebooks/lightgbm_model.ipynb
+notebooks/hgbc_model.ipynb
+notebooks/extratrees_model.ipynb
 ```
 
-These models are included to support the required model comparison and experimental analysis.
+The corresponding scripts are stored in the `src/` folder.
 
 ## Main Results
 
-| Model | Role | Notes |
-|---|---|---|
-| CatBoost | Final selected model | Best public leaderboard score |
-| XGBoost | Comparison model | Strong gradient boosting baseline |
-| LightGBM | Comparison model | Efficient histogram-based boosting model |
-| HGBC | Comparison model | Scikit-learn histogram gradient boosting baseline |
+| Rank | Model | Public Score | Role |
+|---:|---|---:|---|
+| 1 | CatBoost | 0.81318 | Final selected model |
+| 2 | XGBoost + KMeansSMOTE | 0.81295 | Strongest comparison model |
+| 3 | LightGBM | 0.80734 | Fast boosting benchmark |
+| 4 | ExtraTrees | 0.80313 | Additional comparison model |
+| 5 | HGBC | 0.80266 | Reproducible baseline |
 
 Final public Kaggle score:
 
 ```text
-0.80967
+0.81318
 ```
+
+## Result Files
+
+The model comparison records are stored in:
+
+```text
+results/model_comparison.csv
+results/model_ranking.csv
+results/score_progression.csv
+```
+
+These files summarize the public leaderboard scores, model roles, and score progression used in the final report and presentation.
 
 ## Reproducibility Notes
 
-The notebook uses fixed random seeds where applicable. Due to small differences in package versions, hardware, or floating-point computation, minor variations in cross-validation scores may occur.
+The notebooks and scripts use fixed random seeds where applicable. Due to differences in package versions, hardware, or floating-point computation, minor variations in cross-validation scores may occur.
+
+The raw Kaggle data files are intentionally excluded from the repository. Users should download the dataset from Kaggle and place it under the local `data/` folder before running the notebooks or scripts.
 
 ## Project Materials
 
 The final project submission includes:
 
 - Source code and notebooks
-- Final Kaggle submission file
+- Model submission files
+- Result tracking CSV files
 - Final report
 - Presentation slides
 - Figures used in the report and presentation

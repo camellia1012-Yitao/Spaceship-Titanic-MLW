@@ -1,0 +1,8 @@
+stage,model_or_step,public_score,description
+1,Early CatBoost,0.8071,Early CatBoost submission
+2,Improved CatBoost,0.80967,Improved CatBoost submission
+3,HGBC,0.80266,Histogram Gradient Boosting Classifier baseline
+4,LightGBM,0.80734,LightGBM comparison model
+5,ExtraTrees,0.80313,ExtraTrees comparison model
+6,XGBoost + KMeansSMOTE,0.81295,Strongest comparison model
+7,Final CatBoost,0.81318,Final selected model and best public score
