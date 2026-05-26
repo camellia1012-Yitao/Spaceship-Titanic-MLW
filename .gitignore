@@ -1,0 +1,48 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Kaggle raw data
+train.csv
+test.csv
+sample_submission.csv
+
+# Generated submissions
+submissions/*.csv
+!submissions/.gitkeep
+
+# Generated outputs
+outputs/
+_notebook_run/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Large model files
+*.pkl
+*.joblib
+*.model
+*.json
+*.bin
