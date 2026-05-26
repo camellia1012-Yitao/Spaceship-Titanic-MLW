@@ -1,0 +1,6 @@
+rank,model,public_score,role,submission_file
+1,XGBoost + KMeansSMOTE,0.81295,Final submission route,XGBoostKMeansSMOTE_submission_81295.csv
+2,Improved CatBoost,0.80967,Strong categorical-feature route,catboost_submission_0.80967.csv
+3,LightGBM,0.80734,Fast boosting benchmark,LightGBM_submission_0.80734.csv
+4,ExtraTrees,0.80313,Tree ensemble comparison,ExtraTree_submission_0.80313.csv
+5,HGBC,0.80266,Stable scikit-learn baseline,HGBC_submission_0.80266.csv

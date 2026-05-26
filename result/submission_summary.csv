@@ -1,0 +1,6 @@
+submission_file,model,public_score,experiment_role,main_value
+XGBoostKMeansSMOTE_submission_81295.csv,XGBoost + KMeansSMOTE,0.81295,Final submission route,"Best public score; combines compact engineered features, local resampling, and XGBoost"
+catboost_submission_0.80967.csv,Improved CatBoost,0.80967,Strong categorical-feature route,Shows the value of preserving categorical signals and using CatBoost's categorical handling
+LightGBM_submission_0.80734.csv,LightGBM,0.80734,Fast boosting benchmark,Validates engineered features under an efficient gradient boosting framework
+ExtraTree_submission_0.80313.csv,ExtraTrees,0.80313,Randomized tree ensemble comparison,Provides a non-boosting tree ensemble comparison for the engineered feature set
+HGBC_submission_0.80266.csv,HistGradientBoostingClassifier,0.80266,Stable baseline route,Provides a reproducible scikit-learn baseline for comparison with more complex routes
